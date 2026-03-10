@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0a0a1a;
+    color: #00ffff;
+    font-family: 'Share Tech Mono', monospace;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+#game-container {
+    display: flex;
+    height: 100vh;
+    background: 
+        radial-gradient(ellipse at 20% 80%, rgba(0, 100, 150, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(100, 0, 150, 0.1) 0%, transparent 50%),
+        #0a0a1a;
+}
+
+#canvas-wrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 10px;
+}
+
+canvas {
+    border: 2px solid #00ffff33;
+    box-shadow: 
+        0 0 20px rgba(0, 255, 255, 0.2),
+        inset 0 0 60px rgba(0, 255, 255, 0.05);
+    background: #050510;
+}
+
+#sidebar {
+    width: 280px;
+    min-width: 280px;
+    background: linear-gradient(180deg, #0d0d20 0%, #080812 100%);
+    border-left: 1px solid #00ffff22;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    text-align: center;
+    color: #00ffff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    padding-bottom: 10px;
+    border-bottom: 1px solid #00ffff33;
+}
+
+.panel {
+    background: rgba(0, 255, 255, 0.03);
+    border: 1px solid #00ffff22;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.panel h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    color: #00aaaa;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+}
+
+#stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.4rem;
+    color: #00ffff;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.stat-label {
+    font-size: 0.6rem;
+    color: #666;
+    text-transform: uppercase;
+}
+
+#tower-select {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.tower-btn {
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid #00ffff33;
+    border-radius: 5px;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tower-btn:hover {
+    background: rgba(0, 255, 255, 0.1);
+    border-color: #00ffff66;
+}
+
+.tower-btn.selected {
+    background: rgba(0, 255, 255, 0.15);
+    border-color: #00ffff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.tower-icon {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.tower-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.tower-name {
+    color: #00ffff;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+.tower-cost {
+    color: #ffaa00;
+    font-size: 0.65rem;
+}
+
+.tower-icon.hadamard { background: linear-gradient(135deg, #00ffff33, #00ffff11); border: 1px solid #00ffff; }
+.tower-icon.rx20 { background: linear-gradient(135deg, #ff888833, #ff888811); border: 1px solid #ff8888; }
+.tower-icon.rx45 { background: linear-gradient(135deg, #ff666633, #ff666611); border: 1px solid #ff6666; }
+.tower-icon.rx90 { background: linear-gradient(135deg, #ff444433, #ff444411); border: 1px solid #ff4444; }
+.tower-icon.ry20 { background: linear-gradient(135deg, #88ff8833, #88ff8811); border: 1px solid #88ff88; }
+.tower-icon.ry45 { background: linear-gradient(135deg, #66ff6633, #66ff6611); border: 1px solid #66ff66; }
+.tower-icon.ry90 { background: linear-gradient(135deg, #44ff4433, #44ff4411); border: 1px solid #44ff44; }
+.tower-icon.rz20 { background: linear-gradient(135deg, #ff88ff33, #ff88ff11); border: 1px solid #ff88ff; }
+.tower-icon.rz45 { background: linear-gradient(135deg, #ff66ff33, #ff66ff11); border: 1px solid #ff66ff; }
+.tower-icon.rz90 { background: linear-gradient(135deg, #ff44ff33, #ff44ff11); border: 1px solid #ff44ff; }
+.tower-icon.measure { background: linear-gradient(135deg, #ffff6633, #ffff6611); border: 1px solid #ffff66; }
+.tower-icon.measureX { background: linear-gradient(135deg, #66ffff33, #66ffff11); border: 1px solid #66ffff; }
+.tower-icon.measureY { background: linear-gradient(135deg, #ffaa6633, #ffaa6611); border: 1px solid #ffaa66; }
+
+#quantum-info {
+    font-size: 0.65rem;
+    line-height: 1.5;
+    color: #888;
+}
+
+#quantum-info code {
+    color: #00ffff;
+    background: rgba(0, 255, 255, 0.1);
+    padding: 1px 3px;
+    border-radius: 2px;
+}
+
+#message-log {
+    flex: 1;
+    overflow-y: auto;
+    font-size: 0.6rem;
+    color: #555;
+    max-height: 120px;
+    min-height: 80px;
+}
+
+.log-entry {
+    padding: 3px 0;
+    border-bottom: 1px solid #111;
+}
+
+.log-entry.kill { color: #00ff00; }
+.log-entry.spawn { color: #ffaa00; }
+.log-entry.collapse { color: #ff00ff; }
+
+#start-btn {
+    background: linear-gradient(135deg, #00ffff44, #00ffff22);
+    border: 1px solid #00ffff;
+    color: #00ffff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+#start-btn:hover {
+    background: linear-gradient(135deg, #00ffff66, #00ffff44);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+}
+
+#start-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+#instructions {
+    font-size: 0.6rem;
+    color: #555;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.key {
+    display: inline-block;
+    background: #222;
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid #333;
+    color: #888;
+}
+
+#speed-toggle {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+}
+
+.speed-btn {
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid #00ffff44;
+    color: #00ffff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    transition: all 0.2s;
+}
+
+.speed-btn:hover {
+    background: rgba(0, 255, 255, 0.2);
+}
+
+.speed-btn.active {
+    background: #00ffff;
+    color: #000;
+}
