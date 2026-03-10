@@ -33,13 +33,13 @@ const PATH = [
     {x: 1050, y: 380}
 ];
 
-// Wave definitions with enemy count, spawn interval, and HP multiplier
+// Wave definitions with enemy count and spawn interval
 const WAVES = [
-    { count: 5, interval: 2000, hpMultiplier: 1 },
-    { count: 8, interval: 1800, hpMultiplier: 1.2 },
-    { count: 12, interval: 1500, hpMultiplier: 1.5 },
-    { count: 15, interval: 1200, hpMultiplier: 2 },
-    { count: 20, interval: 1000, hpMultiplier: 2.5 }
+    { count: 5, interval: 2000 },
+    { count: 8, interval: 1800 },
+    { count: 12, interval: 1500 },
+    { count: 15, interval: 1200 },
+    { count: 20, interval: 1000 }
 ];
 
 // Export for use in other modules

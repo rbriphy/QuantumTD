@@ -2,11 +2,11 @@
 
 // Enemy class - represents a quantum enemy that travels along the path
 class Enemy {
-    constructor(waveMultiplier) {
+    constructor() {
         this.x = PATH[0].x;
         this.y = PATH[0].y;
         this.pathIndex = 0;
-        this.speed = 0.7 + waveMultiplier * 0.08;
+        this.speed = 0.7;
         this.quantumState = createQuantumState();
         this.size = 20;
         this.alive = true;
@@ -121,13 +121,20 @@ class Enemy {
         ctx.fillStyle = '#ffffff';
         ctx.font = '8px "Share Tech Mono"';
         ctx.textAlign = 'center';
-        ctx.fillText(`|0⟩:${amp0.re >= 0 ? '' : '-'}${Math.abs(amp0.re).toFixed(2)}${amp0.im >= 0 ? '+' : '-'}${Math.abs(amp0.im).toFixed(2)}i`, this.x, this.y - this.size - 12);
-        ctx.fillText(`|1⟩:${amp1.re >= 0 ? '' : '-'}${Math.abs(amp1.re).toFixed(2)}${amp1.im >= 0 ? '+' : '-'}${Math.abs(amp1.im).toFixed(2)}i`, this.x, this.y - this.size - 3);
+        
+        const formatAmp = (amp) => {
+            const re = `${amp.re >= 0 ? '' : '-'}${Math.abs(amp.re).toFixed(2)}`;
+            if (Math.abs(amp.im) < 0.005) return re;
+            return `${re}${amp.im >= 0 ? '+' : '-'}${Math.abs(amp.im).toFixed(2)}i`;
+        };
+        
+        ctx.fillText(`|0⟩:${formatAmp(amp0)}`, this.x, this.y - this.size - 12);
+        ctx.fillText(`|1⟩:${formatAmp(amp1)}`, this.x, this.y - this.size - 3);
         
         // Draw health bar
         const barWidth = 40;
         const barHeight = 4;
-        ctx.fillStyle = '#222';
+        ctx.fillStyle = '#333333';
         ctx.fillRect(this.x - barWidth/2, this.y + this.size + 5, barWidth, barHeight);
         ctx.fillStyle = '#00ffff';
         ctx.fillRect(this.x - barWidth/2, this.y + this.size + 5, barWidth * health, barHeight);

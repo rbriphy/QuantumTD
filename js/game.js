@@ -21,7 +21,8 @@ const game = {
     enemiesToSpawn: 0,
     gameOver: false,
     victory: false,
-    hoveredEnemy: null
+    hoveredEnemy: null,
+    pinnedEnemy: null
 };
 
 // Update UI elements
@@ -44,7 +45,7 @@ function gameLoop(timestamp) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
     // Draw grid
-    ctx.strokeStyle = '#00ffff06';
+    ctx.strokeStyle = '#00ffff15';
     ctx.lineWidth = 1;
     for (let x = 0; x < canvas.width; x += 40) { 
         ctx.beginPath(); 
@@ -69,7 +70,7 @@ function gameLoop(timestamp) {
             game.spawnTimer += dt;
             const waveConfig = WAVES[game.wave - 1];
             if (waveConfig && game.spawnTimer >= waveConfig.interval) {
-                game.enemies.push(new Enemy(waveConfig.hpMultiplier));
+                game.enemies.push(new Enemy());
                 game.enemiesToSpawn--;
                 game.spawnTimer = 0;
             }
@@ -88,10 +89,12 @@ function gameLoop(timestamp) {
             
             if (enemy.reachedEnd && enemy.alive) {
                 game.lives--;
+                if (game.pinnedEnemy === enemy) game.pinnedEnemy = null;
                 game.enemies.splice(i, 1);
                 log('Enemy escaped! -1 life', 'spawn');
                 if (game.lives <= 0) { game.gameOver = true; log('GAME OVER', 'kill'); }
             } else if (!enemy.alive) {
+                if (game.pinnedEnemy === enemy) game.pinnedEnemy = null;
                 game.enemies.splice(i, 1);
             }
         }
@@ -144,8 +147,6 @@ function gameLoop(timestamp) {
 // Start the game
 function startGame() {
     game.running = true;
-    log('Welcome to Quantum TD!', 'spawn');
-    log('Place towers, then Observe to kill!', 'collapse');
     requestAnimationFrame(gameLoop);
 }
 

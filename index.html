@@ -7,7 +7,32 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div id="game-container">
+    <!-- Title Screen -->
+    <div id="title-screen">
+        <h1 class="title">QUANTUM TD</h1>
+        <div class="title-buttons">
+            <button id="new-game-btn" class="title-btn">New Game</button>
+            <button id="how-to-play-btn" class="title-btn">How to Play</button>
+        </div>
+    </div>
+    
+    <!-- How to Play Screen -->
+    <div id="how-to-play-screen" class="hidden">
+        <h2>How to Play</h2>
+        <div class="how-to-play-content">
+            <p>• Enemies exist in quantum superposition |ψ⟩ = α|0⟩ + β|1⟩</p>
+            <p>• Place quantum gates to rotate the enemy's state on the Bloch sphere</p>
+            <p>• Use <strong>Measurement</strong> towers to collapse the state:</p>
+            <p class="indent">- Z-Measure: collapses to |0⟩ (survive) or |1⟩ (die)</p>
+            <p class="indent">- X-Measure: collapses to |+⟩ (die) or |-⟩ (survive)</p>
+            <p class="indent">- Y-Measure: collapses to |↗⟩ (die) or |↙⟩ (survive)</p>
+            <p>• Build towers along the path to kill enemies before they escape!</p>
+            <p>• Left-click to place towers, right-click to remove</p>
+        </div>
+        <button id="back-btn" class="title-btn">Back</button>
+    </div>
+    
+    <div id="game-container" class="hidden">
         <div id="canvas-wrapper">
             <canvas id="game" width="1100" height="750"></canvas>
         </div>
@@ -145,21 +170,6 @@
                 <h2>QUANTUM STATE</h2>
                 <div id="selected-enemy-info">Hover enemy for state</div>
             </div>
-            
-            <div class="panel" id="quantum-info">
-                <strong>How to Play:</strong><br>
-                • Enemies exist in <code>|ψ⟩ = α|0⟩ + β|1⟩</code> superposition<br>
-                • Place gates to rotate quantum state<br>
-                • <code>Measure</code> collapses to |0⟩ (survive) or |1⟩ (die)<br>
-                • Build towers along the path!
-            </div>
-            
-            <div id="message-log"></div>
-            
-            <div id="instructions">
-                <span class="key">Click</span> Place Tower &nbsp;
-                <span class="key">Right-Click</span> Remove Tower
-            </div>
         </div>
     </div>
     
@@ -169,9 +179,33 @@
     <script src="js/entities.js"></script>
     <script src="js/game.js"></script>
     <script>
-        // Initialize game
-        setupInput();
-        startGame();
+        // Title screen functionality
+        const titleScreen = document.getElementById('title-screen');
+        const howToPlayScreen = document.getElementById('how-to-play-screen');
+        const gameContainer = document.getElementById('game-container');
+        const newGameBtn = document.getElementById('new-game-btn');
+        const howToPlayBtn = document.getElementById('how-to-play-btn');
+        const backBtn = document.getElementById('back-btn');
+        
+        // New Game button - start the game
+        newGameBtn.addEventListener('click', () => {
+            titleScreen.classList.add('hidden');
+            gameContainer.classList.remove('hidden');
+            setupInput();
+            startGame();
+        });
+        
+        // How to Play button - show instructions
+        howToPlayBtn.addEventListener('click', () => {
+            titleScreen.classList.add('hidden');
+            howToPlayScreen.classList.remove('hidden');
+        });
+        
+        // Back button - return to title
+        backBtn.addEventListener('click', () => {
+            howToPlayScreen.classList.add('hidden');
+            titleScreen.classList.remove('hidden');
+        });
     </script>
 </body>
 </html>

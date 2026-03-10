@@ -40,7 +40,7 @@ function drawParticles() {
 // Draw the enemy path
 function drawPath() {
     // Main path
-    ctx.strokeStyle = '#00ffff22';
+    ctx.strokeStyle = '#00ffff44';
     ctx.lineWidth = 40;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
@@ -51,12 +51,12 @@ function drawPath() {
     ctx.stroke();
     
     // Inner path
-    ctx.strokeStyle = '#00ffff11';
+    ctx.strokeStyle = '#00ffff33';
     ctx.lineWidth = 28;
     ctx.stroke();
     
     // Waypoints
-    ctx.fillStyle = '#00ffff33';
+    ctx.fillStyle = '#00ffff55';
     for (const point of PATH) {
         ctx.beginPath();
         ctx.arc(point.x, point.y, 5, 0, Math.PI * 2);
@@ -149,13 +149,18 @@ function pointToSegmentDistance(px, py, x1, y1, x2, y2) {
 // Update hover info display
 function updateHoverInfo() {
     const info = document.getElementById('selected-enemy-info');
-    if (game.hoveredEnemy) {
-        const state = game.hoveredEnemy.quantumState;
+    
+    // Use pinned enemy if set, otherwise use hovered enemy
+    const targetEnemy = game.pinnedEnemy || game.hoveredEnemy;
+    
+    if (targetEnemy) {
+        const state = targetEnemy.quantumState;
         const alphaMag = Complex.norm(state.alpha);
         const betaMag = Complex.norm(state.beta);
         const alphaPhase = Math.atan2(state.alpha.im, state.alpha.re) * 180 / Math.PI;
         const betaPhase = Math.atan2(state.beta.im, state.beta.re) * 180 / Math.PI;
-        info.innerHTML = `α: ${alphaMag.toFixed(2)}∠${alphaPhase.toFixed(0)}°<br>β: ${betaMag.toFixed(2)}∠${betaPhase.toFixed(0)}°`;
+        const pinnedText = game.pinnedEnemy ? ' (pinned)' : '';
+        info.innerHTML = `α: ${alphaMag.toFixed(2)}∠${alphaPhase.toFixed(0)}°<br>β: ${betaMag.toFixed(2)}∠${betaPhase.toFixed(0)}°${pinnedText}`;
     } else {
         info.textContent = 'Hover enemy for state';
     }
@@ -209,13 +214,35 @@ function setupInput() {
         updateHoverInfo();
     });
     
-    // Click to place tower
+    // Click to place tower or pin enemy
     canvas.addEventListener('click', (e) => {
-        if (game.gameOver || game.victory || !placementPreview) return;
+        if (game.gameOver || game.victory) return;
+        
+        // If hovering over an enemy, pin/unpin it
+        if (game.hoveredEnemy) {
+            if (game.pinnedEnemy === game.hoveredEnemy) {
+                // Unpin if already pinned
+                game.pinnedEnemy = null;
+            } else {
+                // Pin the hovered enemy
+                game.pinnedEnemy = game.hoveredEnemy;
+            }
+            return;
+        }
+        
+        // If no valid placement preview, deselect the tower
+        if (!placementPreview) {
+            game.selectedTower = null;
+            game.pinnedEnemy = null;
+            document.querySelectorAll('.tower-btn').forEach(b => b.classList.remove('selected'));
+            return;
+        }
+        
+        // Clear pinned enemy when placing a tower
+        game.pinnedEnemy = null;
         
         const cost = TOWER_TYPES[game.selectedTower].cost;
         if (game.credits < cost) { 
-            log('Not enough credits!', 'spawn'); 
             return; 
         }
         
@@ -228,7 +255,16 @@ function setupInput() {
         
         game.towers.push(new Tower(placementPreview.x, placementPreview.y, game.selectedTower));
         game.credits -= cost;
-        log(`Placed ${game.selectedTower} (-${cost})`, 'spawn');
+    });
+    
+    // Click on sidebar to deselect tower
+    document.getElementById('sidebar').addEventListener('click', (e) => {
+        if (game.gameOver || game.victory) return;
+        // Don't deselect if clicking on a tower button (they handle their own selection)
+        if (e.target.closest('.tower-btn')) return;
+        // Deselect tower when clicking on sidebar
+        game.selectedTower = null;
+        document.querySelectorAll('.tower-btn').forEach(b => b.classList.remove('selected'));
     });
     
     // Right-click to remove tower
@@ -291,7 +327,7 @@ function setupInput() {
 
 // Draw placement preview
 function drawPlacementPreview() {
-    if (!placementPreview || game.gameOver || game.victory) return;
+    if (!placementPreview || game.gameOver || game.victory || !game.selectedTower) return;
     
     const config = TOWER_TYPES[game.selectedTower];
     
