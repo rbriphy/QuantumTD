@@ -189,7 +189,7 @@ function gameLoop(timestamp) {
                 if (game.pinnedEnemy === enemy) game.pinnedEnemy = null;
                 game.enemies.splice(i, 1);
                 log('Enemy escaped! -1 life', 'spawn');
-                if (typeof playSound === 'function') { playSound('enemyEscape', { volume: 0.8 }); playSound('lifeLost', { volume: 0.8 }); }
+                if (typeof playSound === 'function') { playSound('lifeLost', { volume: 0.8 }); }
                 if (game.lives <= 0) { 
                     game.gameOver = true; 
                     log('GAME OVER', 'kill'); 
@@ -225,7 +225,7 @@ function gameLoop(timestamp) {
                 // Stop game music
                 audioManager.stopBackgroundMusic();
             }
-            else log(`Wave complete! Wave ${game.wave} ready.`, 'kill'); if (typeof playSound === 'function') playSound('waveComplete', { volume: 0.7 });
+            else log(`Wave complete! Wave ${game.wave} ready.`, 'kill'); if (typeof playSound === 'function' && !game.gameOver) playSound('waveComplete', { volume: 0.7 });
         }
     }
     

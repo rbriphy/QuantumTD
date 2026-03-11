@@ -48,24 +48,24 @@ class Enemy {
             case 'hadamard': if (typeof playSound === 'function') playSound('gateApply', { volume: 0.4 }); 
                 applyHadamard(this.quantumState); 
                 break;
-            case 'rx20': applyRx(this.quantumState, 20); break;
-            case 'rx45': applyRx(this.quantumState, 45); break;
-            case 'rx90': applyRx(this.quantumState, 90); break;
-            case 'ry20': applyRy(this.quantumState, 20); break;
-            case 'ry45': applyRy(this.quantumState, 45); break;
-            case 'ry90': applyRy(this.quantumState, 90); break;
-            case 'rz20': applyRz(this.quantumState, 20); break;
-            case 'rz45': applyRz(this.quantumState, 45); break;
-            case 'rz90': applyRz(this.quantumState, 90); break;
-            case 'measure': if (typeof playSound === 'function') playSound('measurement', { volume: 0.5 });
+            case 'rx20': if (typeof playSound === 'function') playSound('gateApply', { volume: 0.4 }); applyRx(this.quantumState, 20); break;
+            case 'rx45': if (typeof playSound === 'function') playSound('gateApply', { volume: 0.4 }); applyRx(this.quantumState, 45); break;
+            case 'rx90': if (typeof playSound === 'function') playSound('gateApply', { volume: 0.4 }); applyRx(this.quantumState, 90); break;
+            case 'ry20': if (typeof playSound === 'function') playSound('gateApply', { volume: 0.4 }); applyRy(this.quantumState, 20); break;
+            case 'ry45': if (typeof playSound === 'function') playSound('gateApply', { volume: 0.4 }); applyRy(this.quantumState, 45); break;
+            case 'ry90': if (typeof playSound === 'function') playSound('gateApply', { volume: 0.4 }); applyRy(this.quantumState, 90); break;
+            case 'rz20': if (typeof playSound === 'function') playSound('gateApply', { volume: 0.4 }); applyRz(this.quantumState, 20); break;
+            case 'rz45': if (typeof playSound === 'function') playSound('gateApply', { volume: 0.4 }); applyRz(this.quantumState, 45); break;
+            case 'rz90': if (typeof playSound === 'function') playSound('gateApply', { volume: 0.4 }); applyRz(this.quantumState, 90); break;
+            case 'measure': 
                 const resultZ = measure(this.quantumState, 'Z');
                 this.handleMeasurement(resultZ);
                 break;
-            case 'measureX': if (typeof playSound === 'function') playSound('measurement', { volume: 0.5 });
+            case 'measureX': 
                 const resultX = measure(this.quantumState, 'X');
                 this.handleMeasurement(resultX);
                 break;
-            case 'measureY': if (typeof playSound === 'function') playSound('measurement', { volume: 0.5 });
+            case 'measureY': 
                 const resultY = measure(this.quantumState, 'Y');
                 this.handleMeasurement(resultY);
                 break;
@@ -229,7 +229,7 @@ class Tower {
             if (dist < this.range) {
                 enemy.applyGate(this.type);
                 this.cooldown = this.maxCooldown;
-                createParticles(this.x, this.y, TOWER_TYPES[this.type].color, 4); if (typeof playSound === 'function') playSound('towerActivate', { volume: 0.4 });
+                createParticles(this.x, this.y, TOWER_TYPES[this.type].color, 4);
                 break;
             }
         }

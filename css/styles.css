@@ -721,3 +721,376 @@ h1 {
     background: linear-gradient(135deg, #ff6666, #ff0000);
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
 }
+
+/* ============================================
+   MULTI-PAGE HOW TO PLAY STYLES
+   ============================================ */
+
+/* Back to Menu Button */
+.htp-back-menu-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    border: 1px solid #666666;
+    background: rgba(255, 255, 255, 0.1);
+    color: #aaaaaa;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+.htp-back-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #888888;
+    color: #ffffff;
+}
+
+/* Page Indicator Dots */
+.htp-page-indicator {
+    position: absolute;
+    top: 80px;
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.htp-page-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.htp-page-dot:hover {
+    background: rgba(0, 255, 255, 0.3);
+}
+
+.htp-page-dot.active {
+    background: #00ffff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    transform: scale(1.2);
+}
+
+/* Page Container */
+.htp-page {
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    width: 100%;
+    animation: htpFadeIn 0.4s ease-out;
+}
+
+@keyframes htpFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Content Area */
+.htp-content {
+    background: rgba(0, 255, 255, 0.03);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 30px;
+    max-height: 60vh;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.htp-content h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    color: #00ffff;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    margin-bottom: 25px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.htp-intro {
+    font-size: 1.2rem;
+    color: #eeeeee;
+    text-align: center;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+/* Sections within pages */
+.htp-section {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.htp-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.htp-section h4 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    color: #00ffff;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.htp-section p {
+    font-size: 1rem;
+    color: #cccccc;
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+
+.htp-section ul {
+    margin-left: 20px;
+    color: #cccccc;
+    line-height: 1.8;
+}
+
+.htp-section li {
+    margin-bottom: 6px;
+}
+
+/* Analogy box */
+.htp-analogy {
+    background: rgba(255, 204, 0, 0.1);
+    border-left: 3px solid #ffcc00;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: #ffdd88;
+}
+
+/* Equation styling */
+.htp-equation {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.4rem;
+    color: #00ffff;
+    background: rgba(0, 255, 255, 0.1);
+    padding: 15px 25px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 15px 0;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    letter-spacing: 2px;
+}
+
+/* Bullet list styling */
+.htp-bullet-list {
+    margin-left: 20px !important;
+    list-style: disc;
+}
+
+.htp-bullet-list li {
+    margin-bottom: 8px;
+}
+
+/* Diagram for Bloch sphere poles */
+.htp-diagram {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 20px 0;
+}
+
+.htp-diagram-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.htp-state {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 2rem;
+    color: #00ffff;
+    background: rgba(0, 255, 255, 0.1);
+    padding: 15px 25px;
+    border-radius: 50%;
+    border: 2px solid #00ffff;
+    min-width: 80px;
+    text-align: center;
+}
+
+.htp-state-desc {
+    font-size: 0.85rem;
+    color: #aaaaaa;
+    text-align: center;
+}
+
+/* Tower categories */
+.htp-tower-category {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.htp-tower-category h5 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    color: #00ffea;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.htp-tower-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.htp-tower-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: #cccccc;
+    padding: 8px;
+    background: rgba(0, 255, 255, 0.03);
+    border-radius: 4px;
+}
+
+.htp-tower-item .tower-icon {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    font-size: 0.6rem;
+    margin-right: 5px;
+}
+
+.htp-kill-option {
+    border-left: 3px solid #ff4444;
+    padding-left: 12px;
+}
+
+.htp-survive-option {
+    border-left: 3px solid #44ff44;
+    padding-left: 12px;
+}
+
+.htp-kill-text {
+    color: #ff6666;
+    font-size: 0.9rem;
+}
+
+.htp-survive-text {
+    color: #66ff66;
+    font-size: 0.9rem;
+}
+
+/* Final section */
+.htp-final {
+    text-align: center;
+    padding: 20px !important;
+    background: rgba(0, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.htp-final p {
+    font-size: 1.2rem;
+    color: #00ffff;
+    text-align: center;
+}
+
+/* Navigation buttons */
+.htp-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.htp-nav .title-btn {
+    min-width: 140px;
+    font-size: 1rem;
+    padding: 12px 30px;
+}
+
+.htp-next-btn {
+    background: rgba(0, 255, 255, 0.15);
+}
+
+.htp-prev-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #888888;
+    color: #cccccc;
+}
+
+.htp-prev-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #aaaaaa;
+    color: #ffffff;
+}
+
+.htp-done-btn {
+    background: linear-gradient(135deg, #00ff88, #00aa55);
+    border-color: #008833;
+    color: #001100;
+}
+
+.htp-done-btn:hover {
+    background: linear-gradient(135deg, #44ffaa, #00cc66);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+}
+
+/* Scrollbar styling for htp-content */
+.htp-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.htp-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.htp-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.htp-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 255, 0.5);
+}
+
+/* Bloch Sphere Visualization Container */
+#bloch-container {
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle at center, #020617 0%, #01030a 100%);
+    border: 1px solid rgba(0,255,255,0.2);
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,255,255,0.15) inset;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.htp-bloch-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+/* Make container larger on desktop */
+@media (min-width: 800px) {
+    #bloch-container {
+        width: 380px;
+        height: 380px;
+    }
+}

@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum TD</title>
+    <title>Qubit Defense</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <!-- Pre-Menu Screen (for audio autoplay) -->
     <div id="pre-menu-screen">
-        <button id="start-btn-pre" class="pre-menu-btn">QUANTUM TD</button>
+        <button id="start-btn-pre" class="pre-menu-btn">QUBIT DEFENSE</button>
     </div>
     
     <!-- Title Screen -->
@@ -20,7 +20,7 @@
             <input type="range" id="title-music-volume" min="0" max="100" value="50">
         </div>
         
-        <h1 class="title">QUANTUM TD</h1>
+        <h1 class="title">QUBIT DEFENSE</h1>
         <div class="title-buttons">
             <button id="career-btn" class="title-btn">Career Mode</button>
             <button id="sandbox-btn" class="title-btn">Sandbox Mode</button>
@@ -28,7 +28,7 @@
         </div>
     </div>
     
-    <!-- How to Play Screen -->
+    <!-- How to Play Screen - Multi-page -->
     <div id="how-to-play-screen" class="hidden">
         <!-- Music Volume Slider -->
         <div class="music-volume-slider" id="howtoplay-music-slider">
@@ -36,18 +36,197 @@
             <input type="range" id="howtoplay-music-volume" min="0" max="100" value="50">
         </div>
         
-        <h2>How to Play</h2>
-        <div class="how-to-play-content">
-            <p>• Enemies exist in quantum superposition |ψ⟩ = α|0⟩ + β|1⟩</p>
-            <p>• Place quantum gates to rotate the enemy's state on the Bloch sphere</p>
-            <p>• Use <strong>Measurement</strong> towers to collapse the state:</p>
-            <p class="indent">- Z-Measure: collapses to |0⟩ (survive) or |1⟩ (die)</p>
-            <p class="indent">- X-Measure: collapses to |+⟩ (die) or |-⟩ (survive)</p>
-            <p class="indent">- Y-Measure: collapses to |↗⟩ (die) or |↙⟩ (survive)</p>
-            <p>• Build towers along the path to kill enemies before they escape!</p>
-            <p>• Left-click to place towers, right-click to remove</p>
+        <!-- Back to Menu Button (always visible) -->
+        <button id="htp-back-menu-btn" class="htp-back-menu-btn">← Back to Menu</button>
+        
+        <!-- Page Indicator -->
+        <div class="htp-page-indicator">
+            <span class="htp-page-dot active" data-page="1"></span>
+            <span class="htp-page-dot" data-page="2"></span>
+            <span class="htp-page-dot" data-page="3"></span>
+            <span class="htp-page-dot" data-page="4"></span>
         </div>
-        <button id="back-btn" class="title-btn">Back</button>
+        
+        <h2>How to Play</h2>
+        
+        <!-- Page 1: Welcome & Overview -->
+        <div class="htp-page" data-page="1">
+            <div class="htp-content">
+                <h3>Welcome to Qubit Defense!</h3>
+                <p class="htp-intro">A tower defense game where you use <strong>quantum mechanics</strong> to defeat enemies!</p>
+                
+                <div class="htp-section">
+                    <h4>The Goal</h4>
+                    <p>Enemies travel along a path toward your defenses. Your job is to <strong>kill them</strong> before they escape!</p>
+                </div>
+                
+                <div class="htp-section">
+                    <h4>What's Different?</h4>
+                    <p>Unlike traditional tower defense games, enemies here exist in a special quantum state called <strong>superposition</strong>. They're neither fully alive nor fully dead until you measure them!</p>
+                </div>
+                
+                <div class="htp-section">
+                    <h4>How to Play</h4>
+                    <ul>
+                        <li><strong>Left-click</strong> on the path to place a quantum tower.</li>
+                        <li><strong>Right-click</strong> on a tower to remove it.</li>
+                        <li>Press <strong>START WAVE</strong> to begin each wave.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="htp-nav">
+                <div></div> <!-- Empty for alignment -->
+                <button class="htp-next-btn title-btn">Next →</button>
+            </div>
+        </div>
+        
+        <!-- Page 2: Quantum Basics -->
+        <div class="htp-page hidden" data-page="2">
+            <div class="htp-content">
+                <h3>Quantum Basics</h3>
+                
+                <div class="htp-section">
+                    <h4>What is a Qubit?</h4>
+                    <p>A <strong>qubit</strong> (quantum bit) is like a regular computer bit, but with a twist! While a regular bit can only be 0 or 1, a qubit can be <strong>both at the same time.</strong></p>
+                    <p class="htp-analogy"><strong>Think of it like a spinning coin:</strong> While it's spinning, you can't say whether it's heads or tails. In a sense, it is both at once. When you catch it, it "collapses" to one or the other.</p>
+                </div>
+                
+                <div class="htp-section">
+                    <h4>Superposition</h4>
+                    <p>We write a qubit's state as:</p>
+                    <div class="htp-equation">|ψ⟩ = α|0⟩ + β|1⟩</div>
+                    <p>This is called <strong>superposition</strong>. The values α (alpha) and β (beta) tell us how "much" of |0⟩ and |1⟩ the qubit has.</p>
+                    <p>In our game:</p>
+                    <ul class="htp-bullet-list">
+                        <li><strong>|0⟩</strong> = Enemy survives (full health)</li>
+                        <li><strong>|1⟩</strong> = Enemy dies</li>
+                    </ul>
+                </div>
+                
+                <div class="htp-section">
+                    <h4>Probability</h4>
+                    <p>The chance of measuring |1⟩ (killing the enemy) is |β|² — the squared size of β. If β is 0.7 (70%), there's a 49% chance to kill!</p>
+                </div>
+            </div>
+            <div class="htp-nav">
+                <button class="htp-prev-btn title-btn">← Previous</button>
+                <button class="htp-next-btn title-btn">Next →</button>
+            </div>
+        </div>
+        
+        <!-- Page 3: The Bloch Sphere -->
+        <div class="htp-page hidden" data-page="3">
+            <div class="htp-content">
+                <h3>The Bloch Sphere</h3>
+                
+                <div class="htp-section">
+                    <h4>Visualizing a Qubit</h4>
+                    <p>We can picture a qubit as a point on a sphere called the <strong>Bloch sphere</strong>. Every possible qubit state is a point on this sphere!</p>
+                    
+                    <!-- Bloch Sphere 3D Visualization -->
+                    <div class="htp-bloch-wrapper">
+                        <div id="bloch-container"></div>
+                    </div>
+                </div>
+                
+                <div class="htp-section">
+                    <h4>The Poles</h4>
+                    <div class="htp-diagram">
+                        <div class="htp-diagram-item">
+                            <span class="htp-state">|0⟩</span>
+                            <span class="htp-state-desc">North Pole = 100% survive</span>
+                        </div>
+                        <div class="htp-diagram-item">
+                            <span class="htp-state">|1⟩</span>
+                            <span class="htp-state-desc">South Pole = 100% die</span>
+                        </div>
+                    </div>
+                    <p>Most enemies start somewhere in between—giving you a <strong>chance</strong> to kill them!</p>
+                </div>
+                
+                <div class="htp-section">
+                    <h4>Quantum Gates = Rotations</h4>
+                    <p>When you place a tower, you're applying a <strong>quantum gate</strong>—which rotates the enemy's state on the sphere:</p>
+                    <ul class="htp-bullet-list">
+                        <li><strong>Rx gates</strong> — Rotate around X-axis</li>
+                        <li><strong>Ry gates</strong> — Rotate around Y-axis</li>
+                        <li><strong>Rz gates</strong> — Rotate around Z-axis</li>
+                        <li><strong>Hadamard (H)</strong> — Creates superposition!</li>
+                    </ul>
+                </div>
+                
+                <div class="htp-section">
+                    <h4>Measurement = Collapse!</h4>
+                    <p>When you measure an enemy, their quantum state <strong>collapses</strong> to one of the poles. That's when we find out if they live or die!</p>
+                </div>
+            </div>
+            <div class="htp-nav">
+                <button class="htp-prev-btn title-btn">← Previous</button>
+                <button class="htp-next-btn title-btn">Next →</button>
+            </div>
+        </div>
+        
+        <!-- Page 4: Game Mechanics -->
+        <div class="htp-page hidden" data-page="4">
+            <div class="htp-content">
+                <h3>Towers & Strategy</h3>
+                
+                <div class="htp-section">
+                    <h4>Types of Towers</h4>
+                    
+                    <div class="htp-tower-category">
+                        <h5>Rotation Towers (Gate Towers)</h5>
+                        <p>These rotate the enemy's state on the Bloch sphere:</p>
+                        <div class="htp-tower-list">
+                            <div class="htp-tower-item"><span class="tower-icon hadamard">H</span> Hadamard — Rotates along multiple axes at once. Has the special property of being its own inverse.</div>
+                            <div class="htp-tower-item"><span class="tower-icon rx20">X20</span> Rx(20°) — Small X rotation</div>
+                            <div class="htp-tower-item"><span class="tower-icon ry20">Y20</span> Ry(20°) — Small Y rotation</div>
+                            <div class="htp-tower-item"><span class="tower-icon rz20">Z20</span> Rz(20°) — Small Z rotation</div>
+                            <div class="htp-tower-item">...and larger rotations (45°, 90°)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="htp-tower-category">
+                        <h5>Measurement Towers</h5>
+                        <p>These <strong>collapse</strong> the enemy's state, deciding their fate:</p>
+                        <div class="htp-tower-list">
+                            <div class="htp-tower-item htp-kill-option">
+                                <span class="tower-icon measure">Ψ</span> 
+                                <strong>Z-Measure</strong> 
+                                <span class="htp-kill-text">|0⟩ = survive, |1⟩ = die</span>
+                            </div>
+                            <div class="htp-tower-item htp-survive-option">
+                                <span class="tower-icon measureX">+</span> 
+                                <strong>X-Measure</strong> 
+                                <span class="htp-survive-text">resets to |+⟩ or |-⟩</span>
+                            </div>
+                            <div class="htp-tower-item htp-survive-option">
+                                <span class="tower-icon measureY">Y</span> 
+                                <strong>Y-Measure</strong> 
+                                <span class="htp-survive-text">resets to |↗⟩ or |↙⟩</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="htp-section">
+                    <h4>Strategy Tips</h4>
+                    <ul class="htp-bullet-list">
+                        <li><strong>Build rotation towers first</strong> to move enemies toward the |1⟩ state (south pole)</li>
+                        <li><strong>Place measurement towers at the end</strong> of the path for the final kill attempt</li>
+                    </ul>
+                </div>
+                
+                <div class="htp-section htp-final">
+                    <p>Now you're ready to defend the quantum realm!</p>
+                </div>
+            </div>
+            <div class="htp-nav">
+                <button class="htp-prev-btn title-btn">← Previous</button>
+                <button class="htp-done-btn title-btn">Done</button>
+            </div>
+        </div>
+        
     </div>
     
     <div id="game-container" class="hidden">
@@ -67,7 +246,7 @@
             <canvas id="game" width="1100" height="750"></canvas>
         </div>
         <div id="sidebar">
-            <h1>QUANTUM TD</h1>
+            <h1>QUBIT DEFENSE</h1>
             
             <div class="panel" id="stats">
                 <div class="stat">
@@ -354,11 +533,54 @@
             if (typeof playSound === 'function') playSound('buttonHover', { volume: 0.3 });
         });
         
-        // How to Play button - show instructions
+        // ============================================
+        // MULTI-PAGE HOW TO PLAY NAVIGATION
+        // ============================================
+        
+        let currentHtpPage = 1;
+        const totalHtpPages = 4;
+        
+        // Get HTP elements
+        const htpBackMenuBtn = document.getElementById('htp-back-menu-btn');
+        const htpPages = document.querySelectorAll('.htp-page');
+        const htpPageDots = document.querySelectorAll('.htp-page-dot');
+        
+        // Function to navigate to a specific page
+        // Note: Sound is NOT played here to avoid double sounds when called from button handlers
+        function goToHtpPage(pageNum, playSoundEffect = true) {
+            if (pageNum < 1 || pageNum > totalHtpPages) return;
+            
+            currentHtpPage = pageNum;
+            
+            // Hide all pages, show current
+            htpPages.forEach(page => {
+                page.classList.add('hidden');
+                if (page.dataset.page == pageNum) {
+                    page.classList.remove('hidden');
+                }
+            });
+            
+            // Update page dots
+            htpPageDots.forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.dataset.page == pageNum) {
+                    dot.classList.add('active');
+                }
+            });
+            
+            // Play sound only if requested (for prev/next buttons)
+            if (playSoundEffect && typeof playSound === 'function') {
+                playSound('buttonClick', { volume: 0.3 });
+            }
+        }
+        
+        // How to Play button - show instructions (always starts at page 1)
         howToPlayBtn.addEventListener('click', () => {
             if (typeof playSound === 'function') playSound('buttonClick', { volume: 0.5 });
             titleScreen.classList.add('hidden');
             howToPlayScreen.classList.remove('hidden');
+            // Always start on page 1 (don't play extra sound)
+            goToHtpPage(1, false);
         });
         
         // Hover sound for how to play button
@@ -366,17 +588,178 @@
             if (typeof playSound === 'function') playSound('buttonHover', { volume: 0.3 });
         });
         
-    // Back button - return to title
-    backBtn.addEventListener('click', () => {
-        if (typeof playSound === 'function') playSound('buttonClick', { volume: 0.5 });
-        howToPlayScreen.classList.add('hidden');
-        titleScreen.classList.remove('hidden');
-    });
-    
-    // Hover sound for back button
-    backBtn.addEventListener('mouseenter', () => {
-        if (typeof playSound === 'function') playSound('buttonHover', { volume: 0.3 });
-    });
+        // Back to Menu button - return to title and reset to page 1
+        htpBackMenuBtn.addEventListener('click', () => {
+            if (typeof playSound === 'function') playSound('buttonClick', { volume: 0.5 });
+            howToPlayScreen.classList.add('hidden');
+            titleScreen.classList.remove('hidden');
+            // Reset to page 1 for next time
+            goToHtpPage(1);
+        });
+        
+        // Hover sound for back to menu button
+        htpBackMenuBtn.addEventListener('mouseenter', () => {
+            if (typeof playSound === 'function') playSound('buttonHover', { volume: 0.3 });
+        });
+        
+        // Next button handlers
+        document.querySelectorAll('.htp-next-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (currentHtpPage < totalHtpPages) {
+                    goToHtpPage(currentHtpPage + 1);
+                }
+            });
+            btn.addEventListener('mouseenter', () => {
+                if (typeof playSound === 'function') playSound('buttonHover', { volume: 0.3 });
+            });
+        });
+        
+        // Previous button handlers
+        document.querySelectorAll('.htp-prev-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (currentHtpPage > 1) {
+                    goToHtpPage(currentHtpPage - 1);
+                }
+            });
+            btn.addEventListener('mouseenter', () => {
+                if (typeof playSound === 'function') playSound('buttonHover', { volume: 0.3 });
+            });
+        });
+        
+        // Done button handler
+        document.querySelector('.htp-done-btn').addEventListener('click', () => {
+            if (typeof playSound === 'function') playSound('buttonClick', { volume: 0.5 });
+            howToPlayScreen.classList.add('hidden');
+            titleScreen.classList.remove('hidden');
+            // Reset to page 1 for next time
+            goToHtpPage(1);
+        });
+        
+        // Hover sound for done button
+        document.querySelector('.htp-done-btn').addEventListener('mouseenter', () => {
+            if (typeof playSound === 'function') playSound('buttonHover', { volume: 0.3 });
+        });
+        
+        // Page dot click handlers
+        htpPageDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const pageNum = parseInt(dot.dataset.page);
+                goToHtpPage(pageNum);
+            });
+            dot.addEventListener('mouseenter', () => {
+                if (typeof playSound === 'function') playSound('buttonHover', { volume: 0.2 });
+            });
+        });
+        
+        // ============================================
+        // BLOCH SPHERE VISUALIZATION (Page 3)
+        // ============================================
+        
+        let blochInitialized = false;
+        let blochAnimationId = null;
+        
+        function initBlochSphere() {
+            if (blochInitialized) return;
+            
+            const container = document.getElementById("bloch-container");
+            if (!container) return;
+            
+            // Use the original Three.js from CDN with importmap or direct global
+            // Load Three.js using a regular script tag (non-module) for global access
+            const script = document.createElement('script');
+            script.src = "https://cdn.jsdelivr.net/npm/three@0.160/build/three.min.js";
+            script.onload = function() {
+                createBlochSphere(container);
+            };
+            script.onerror = function() {
+                console.error('Failed to load Three.js');
+            };
+            document.head.appendChild(script);
+        }
+        
+        function createBlochSphere(container) {
+            // Check THREE is available
+            if (typeof THREE === 'undefined') {
+                console.error('THREE is not defined');
+                return;
+            }
+            
+            const scene = new THREE.Scene();
+            
+            const camera = new THREE.PerspectiveCamera(
+                45,
+                container.clientWidth / container.clientHeight,
+                0.1,
+                1000
+            );
+            
+            camera.position.set(2.8, 2.8, 2.8);
+            camera.lookAt(0, 0, 0);
+            
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            container.appendChild(renderer.domElement);
+            
+            // Sphere Wireframe
+            const sphereGeo = new THREE.SphereGeometry(1, 32, 32);
+            const sphereMat = new THREE.MeshBasicMaterial({
+                color: 0x00ffff,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.35
+            });
+            const sphere = new THREE.Mesh(sphereGeo, sphereMat);
+            scene.add(sphere);
+            
+            // Axes
+            const axisMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
+            
+            function axis(dir) {
+                const points = [new THREE.Vector3(0, 0, 0), dir];
+                const geo = new THREE.BufferGeometry().setFromPoints(points);
+                return new THREE.Line(geo, axisMaterial);
+            }
+            
+            scene.add(axis(new THREE.Vector3(1.3, 0, 0)));
+            scene.add(axis(new THREE.Vector3(0, 1.3, 0)));
+            scene.add(axis(new THREE.Vector3(0, 0, 1.3)));
+            
+            // State Vector Arrow
+            const arrow = new THREE.ArrowHelper(
+                new THREE.Vector3(0.4, 0.8, 0.4).normalize(),
+                new THREE.Vector3(0, 0, 0),
+                1,
+                0x00ffff,
+                0.15,
+                0.08
+            );
+            scene.add(arrow);
+            
+            // Animation
+            function animate() {
+                blochAnimationId = requestAnimationFrame(animate);
+                
+                sphere.rotation.y += 0.002;
+                sphere.rotation.x += 0.001;
+                
+                renderer.render(scene, camera);
+            }
+            
+            animate();
+            blochInitialized = true;
+        }
+        
+        // Initialize bloch sphere when navigating to page 3
+        const originalGoToHtpPage = goToHtpPage;
+        goToHtpPage = function(pageNum) {
+            originalGoToHtpPage(pageNum);
+            
+            // Initialize bloch sphere when going to page 3
+            if (pageNum === 3 && !blochInitialized) {
+                // Delay to ensure DOM is ready and page is visible
+                setTimeout(initBlochSphere, 200);
+            }
+        };
     
     // Display toggles
     document.getElementById('wavefunction-toggle').addEventListener('click', (e) => {

@@ -1,6 +1,6 @@
-# Quantum TD - Audio Sound Effects Requirements
+# Qubit Defense - Audio Sound Effects Requirements
 
-This document outlines all the sound effects needed for the Quantum TD game. Place all sound files in the `audio/` folder as MP3 files.
+This document outlines all the sound effects needed for the Qubit Defense game. Place all sound files in the `audio/` folder as MP3 files.
 
 ## Sound File Naming Convention
 All sound files should be named exactly as listed below and saved as `.mp3` format in the `audio/` folder.
@@ -12,7 +12,7 @@ All sound files should be named exactly as listed below and saved as `.mp3` form
 | Sound Name | File Name | Description | Suggested Characteristics |
 |------------|-----------|-------------|--------------------------|
 | Game Over | `game_over.mp3` | Played when player loses all lives | Dramatic, descending tone, 2-3 seconds | DONE
-| Victory | `victory.mp3` | Played when player completes all waves | Triumphant, celebratory, 3-5 seconds |
+| Victory | `victory.mp3` | Played when player completes all waves | Triumphant, celebratory, 3-5 seconds | DONE
 | Wave Start | `wave_start.mp3` | Played when a new wave begins | Alert, ascending, 1-2 seconds | DONE
 | Wave Complete | `wave_complete.mp3` | Played when a wave is cleared | Satisfying completion sound, 1-2 seconds | DONE
 
@@ -23,18 +23,15 @@ All sound files should be named exactly as listed below and saved as `.mp3` form
 | Sound Name | File Name | Description | Suggested Characteristics |
 |------------|-----------|-------------|--------------------------|
 | Tower Place | `tower_place.mp3` | Played when a tower is placed | Mechanical, satisfying click, 0.5 seconds | DONE
-| Tower Remove | `tower_remove.mp3` | Played when a tower is removed (right-click) | Reverse mechanical sound, 0.5 seconds | DONE
-| Tower Activate | `tower_activate.mp3` | Played when tower fires at enemy | Quick zap/ping, 0.3-0.5 seconds |
-
+| Tower Remove | `tower_remove.mp3` | Played when a tower is removed (right-click) | Reverse mechanical sound, 0.5 seconds | DONE |
 ---
 
 ## Enemy Sounds
 
 | Sound Name | File Name | Description | Suggested Characteristics |
 |------------|-----------|-------------|--------------------------|
-| Enemy Escape | `enemy_escape.mp3` | Played when enemy reaches the end | Warning/alarm tone, 1 second |
-| Enemy Kill | `enemy_kill.mp3` | Played when enemy is killed | Satisfying destruction, 0.5-1 second |
-| Enemy Survive | `enemy_survive.mp3` | Played when enemy survives measurement | Disappointing hum, 0.5 seconds |
+| Enemy Kill | `enemy_kill.mp3` | Played when enemy is killed | Satisfying destruction, 0.5-1 second | DONE
+| Enemy Survive | `enemy_survive.mp3` | Played when enemy survives measurement | Disappointing hum, 0.5 seconds | DONE
 
 ---
 
@@ -42,7 +39,7 @@ All sound files should be named exactly as listed below and saved as `.mp3` form
 
 | Sound Name | File Name | Description | Suggested Characteristics |
 |------------|-----------|-------------|--------------------------|
-| Gate Apply | `gate_apply.mp3` | Played when quantum gate is applied | Sci-fi blip, electronic tone, 0.3 seconds |
+| Gate Apply | `gate_apply.mp3` | Played when quantum gate is applied | Sci-fi blip, electronic tone, 0.3 seconds | DONE
 | Measurement | `measurement.mp3` | Played when measurement tower fires | Scanning/reading sound, 0.5-1 second |
 | Collapse | `collapse.mp3` | Played when wavefunction collapses | Whoosh/implosion effect, 0.5 seconds |
 | Superposition | `superposition.mp3` | Optional: ambient quantum effect | Ethereal hum (not currently implemented) |

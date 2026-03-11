@@ -1,4 +1,4 @@
-// Audio System for Quantum TD
+// Audio System for Qubit Defense
 // Provides sound effect management and playback
 
 // Sound effect definitions - maps events to sound file names
@@ -12,17 +12,13 @@ const SOUND_EFFECTS = {
     // Tower sounds
     towerPlace: 'tower_place.mp3',
     towerRemove: 'tower_remove.mp3',
-    towerActivate: 'tower_activate.mp3',
     
     // Enemy sounds
-    enemyEscape: 'enemy_escape.mp3',
     enemyKill: 'enemy_kill.mp3',
     enemySurvive: 'enemy_survive.mp3',
     
     // Quantum effect sounds
     gateApply: 'gate_apply.mp3',
-    measurement: 'measurement.mp3',
-    collapse: 'collapse.mp3',
     superposition: 'superposition.mp3',
     
     // UI sounds
@@ -38,7 +34,7 @@ const SOUND_EFFECTS = {
 
 // Sound categories for volume control
 const SOUND_CATEGORIES = {
-    music: { volume: 0.05, muted: false },
+    music: { volume: 0.7, muted: false },
     sfx: { volume: 0.7, muted: false },
     ui: { volume: 0.5, muted: false },
     quantum: { volume: 0.6, muted: false }
@@ -116,17 +112,13 @@ class AudioManager {
         // Towers
         this.loadSound('towerPlace', audioPath + SOUND_EFFECTS.towerPlace);
         this.loadSound('towerRemove', audioPath + SOUND_EFFECTS.towerRemove);
-        this.loadSound('towerActivate', audioPath + SOUND_EFFECTS.towerActivate);
         
         // Enemies
-        this.loadSound('enemyEscape', audioPath + SOUND_EFFECTS.enemyEscape);
         this.loadSound('enemyKill', audioPath + SOUND_EFFECTS.enemyKill);
         this.loadSound('enemySurvive', audioPath + SOUND_EFFECTS.enemySurvive);
         
         // Quantum effects
         this.loadSound('gateApply', audioPath + SOUND_EFFECTS.gateApply);
-        this.loadSound('measurement', audioPath + SOUND_EFFECTS.measurement);
-        this.loadSound('collapse', audioPath + SOUND_EFFECTS.collapse);
         
         // UI
         this.loadSound('buttonClick', audioPath + SOUND_EFFECTS.buttonClick);
