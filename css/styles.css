@@ -423,6 +423,7 @@ h1 {
     display: flex;
     gap: 6px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .speed-btn {
@@ -540,6 +541,31 @@ h1 {
 .end-game-btn:hover {
     background: linear-gradient(135deg, #ff6666, #ff0000);
     box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+/* Return to Menu Button (shown on game over) */
+.return-menu-btn {
+    position: absolute;
+    top: 62%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    background: linear-gradient(135deg, #00ffff, #0088aa);
+    border: 2px solid #00aaaa;
+    color: #000000;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    padding: 15px 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.return-menu-btn:hover {
+    background: linear-gradient(135deg, #66ffff, #00aaaa);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
 }
 
 /* Game container music slider - positioned to left of sidebar */

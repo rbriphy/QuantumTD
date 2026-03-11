@@ -4,7 +4,6 @@
 // Sound effect definitions - maps events to sound file names
 const SOUND_EFFECTS = {
     // Game state sounds
-    gameStart: 'game_start.mp3',
     gameOver: 'game_over.mp3',
     victory: 'victory.mp3',
     waveStart: 'wave_start.mp3',
@@ -14,10 +13,8 @@ const SOUND_EFFECTS = {
     towerPlace: 'tower_place.mp3',
     towerRemove: 'tower_remove.mp3',
     towerActivate: 'tower_activate.mp3',
-    towerCooldown: 'tower_cooldown.mp3',
     
     // Enemy sounds
-    enemySpawn: 'enemy_spawn.mp3',
     enemyEscape: 'enemy_escape.mp3',
     enemyKill: 'enemy_kill.mp3',
     enemySurvive: 'enemy_survive.mp3',
@@ -30,10 +27,8 @@ const SOUND_EFFECTS = {
     
     // UI sounds
     buttonClick: 'button_click.mp3',
+    buttonHover: 'button_hover.mp3',
     error: 'error.mp3',
-    select: 'select.mp3',
-    creditGain: 'credit_gain.mp3',
-    creditSpend: 'credit_sSpend.mp3',
     lifeLost: 'life_lost.mp3',
     
     // Background music
@@ -43,7 +38,7 @@ const SOUND_EFFECTS = {
 
 // Sound categories for volume control
 const SOUND_CATEGORIES = {
-    music: { volume: 0.5, muted: false },
+    music: { volume: 0.05, muted: false },
     sfx: { volume: 0.7, muted: false },
     ui: { volume: 0.5, muted: false },
     quantum: { volume: 0.6, muted: false }
@@ -113,7 +108,6 @@ class AudioManager {
         const audioPath = 'audio/';
         
         // Game state
-        this.loadSound('gameStart', audioPath + SOUND_EFFECTS.gameStart);
         this.loadSound('gameOver', audioPath + SOUND_EFFECTS.gameOver);
         this.loadSound('victory', audioPath + SOUND_EFFECTS.victory);
         this.loadSound('waveStart', audioPath + SOUND_EFFECTS.waveStart);
@@ -125,7 +119,6 @@ class AudioManager {
         this.loadSound('towerActivate', audioPath + SOUND_EFFECTS.towerActivate);
         
         // Enemies
-        this.loadSound('enemySpawn', audioPath + SOUND_EFFECTS.enemySpawn);
         this.loadSound('enemyEscape', audioPath + SOUND_EFFECTS.enemyEscape);
         this.loadSound('enemyKill', audioPath + SOUND_EFFECTS.enemyKill);
         this.loadSound('enemySurvive', audioPath + SOUND_EFFECTS.enemySurvive);
@@ -137,10 +130,8 @@ class AudioManager {
         
         // UI
         this.loadSound('buttonClick', audioPath + SOUND_EFFECTS.buttonClick);
+        this.loadSound('buttonHover', audioPath + SOUND_EFFECTS.buttonHover);
         this.loadSound('error', audioPath + SOUND_EFFECTS.error);
-        this.loadSound('select', audioPath + SOUND_EFFECTS.select);
-        this.loadSound('creditGain', audioPath + SOUND_EFFECTS.creditGain);
-        this.loadSound('creditSpend', audioPath + SOUND_EFFECTS.creditSpend);
         this.loadSound('lifeLost', audioPath + SOUND_EFFECTS.lifeLost);
     }
     

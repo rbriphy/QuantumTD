@@ -249,6 +249,7 @@ function setupInput() {
         
         const cost = TOWER_TYPES[game.selectedTower].cost;
         if (game.credits < cost) { 
+            if (typeof playSound === 'function') playSound('error', { volume: 0.5 });
             return; 
         }
         
@@ -260,7 +261,7 @@ function setupInput() {
         }
         
         game.towers.push(new Tower(placementPreview.x, placementPreview.y, game.selectedTower)); if (typeof playSound === 'function') playSound('towerPlace', { volume: 0.6 });
-        game.credits -= cost; if (typeof playSound === 'function') playSound('creditSpend', { volume: 0.5 });
+        game.credits -= cost;
     });
     
     // Click on sidebar to deselect tower
@@ -299,7 +300,6 @@ function setupInput() {
     });
     
     // Tower selection buttons
-    if (typeof playSound === 'function') playSound('select', { volume: 0.4 });
         document.querySelectorAll('.tower-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             // Check if tower is unlocked

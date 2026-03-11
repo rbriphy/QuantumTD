@@ -51,11 +51,11 @@ const PATH = [
 
 // Wave definitions with enemy count and spawn interval
 const WAVES = [
-    { count: 5, interval: 2000 },
-    { count: 8, interval: 1800 },
-    { count: 12, interval: 1500 },
-    { count: 15, interval: 1200 },
-    { count: 20, interval: 1000 }
+    { count: 25, interval: 8000 },
+    { count: 8, interval: 8000 },
+    { count: 12, interval: 8000 },
+    { count: 15, interval: 8000 },
+    { count: 20, interval: 8000 }
 ];
 
 // Display settings

@@ -80,7 +80,7 @@ class Enemy {
                 // Z-basis measurement killed the enemy (collapsed to |1⟩)
                 this.alive = false;
                 game.kills++;
-                game.credits += 15; if (typeof playSound === 'function') playSound('creditGain', { volume: 0.5 });
+                game.credits += 15;
                 log(`Collapsed to ${result.result} (${result.basis}) - KILLED!`, 'kill'); if (typeof playSound === 'function') playSound('enemyKill', { volume: 0.8 });
                 createParticles(this.x, this.y, '#00ff00');
             } else {
@@ -165,7 +165,7 @@ class Tower {
         this.type = type;
         this.range = 55;
         this.cooldown = 0;
-        this.maxCooldown = 35;
+        this.maxCooldown = 200;
         this.pulseTimer = 0;
     }
     

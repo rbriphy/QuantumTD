@@ -11,11 +11,10 @@ All sound files should be named exactly as listed below and saved as `.mp3` form
 
 | Sound Name | File Name | Description | Suggested Characteristics |
 |------------|-----------|-------------|--------------------------|
-| Game Start | `game_start.mp3` | Played when player starts a new game | Energetic, uplifting, 2-3 seconds |
-| Game Over | `game_over.mp3` | Played when player loses all lives | Dramatic, descending tone, 2-3 seconds |
+| Game Over | `game_over.mp3` | Played when player loses all lives | Dramatic, descending tone, 2-3 seconds | DONE
 | Victory | `victory.mp3` | Played when player completes all waves | Triumphant, celebratory, 3-5 seconds |
-| Wave Start | `wave_start.mp3` | Played when a new wave begins | Alert, ascending, 1-2 seconds |
-| Wave Complete | `wave_complete.mp3` | Played when a wave is cleared | Satisfying completion sound, 1-2 seconds |
+| Wave Start | `wave_start.mp3` | Played when a new wave begins | Alert, ascending, 1-2 seconds | DONE
+| Wave Complete | `wave_complete.mp3` | Played when a wave is cleared | Satisfying completion sound, 1-2 seconds | DONE
 
 ---
 
@@ -23,10 +22,9 @@ All sound files should be named exactly as listed below and saved as `.mp3` form
 
 | Sound Name | File Name | Description | Suggested Characteristics |
 |------------|-----------|-------------|--------------------------|
-| Tower Place | `tower_place.mp3` | Played when a tower is placed | Mechanical, satisfying click, 0.5 seconds |
-| Tower Remove | `tower_remove.mp3` | Played when a tower is removed (right-click) | Reverse mechanical sound, 0.5 seconds |
+| Tower Place | `tower_place.mp3` | Played when a tower is placed | Mechanical, satisfying click, 0.5 seconds | DONE
+| Tower Remove | `tower_remove.mp3` | Played when a tower is removed (right-click) | Reverse mechanical sound, 0.5 seconds | DONE
 | Tower Activate | `tower_activate.mp3` | Played when tower fires at enemy | Quick zap/ping, 0.3-0.5 seconds |
-| Tower Cooldown | `tower_cooldown.mp3` | Optional: played when tower goes on cooldown | Subtle whoosh (not currently implemented) |
 
 ---
 
@@ -34,7 +32,6 @@ All sound files should be named exactly as listed below and saved as `.mp3` form
 
 | Sound Name | File Name | Description | Suggested Characteristics |
 |------------|-----------|-------------|--------------------------|
-| Enemy Spawn | `enemy_spawn.mp3` | Played when enemy appears | Subtle whoosh/appear sound, 0.3 seconds |
 | Enemy Escape | `enemy_escape.mp3` | Played when enemy reaches the end | Warning/alarm tone, 1 second |
 | Enemy Kill | `enemy_kill.mp3` | Played when enemy is killed | Satisfying destruction, 0.5-1 second |
 | Enemy Survive | `enemy_survive.mp3` | Played when enemy survives measurement | Disappointing hum, 0.5 seconds |
@@ -56,12 +53,10 @@ All sound files should be named exactly as listed below and saved as `.mp3` form
 
 | Sound Name | File Name | Description | Suggested Characteristics |
 |------------|-----------|-------------|--------------------------|
-| Button Click | `button_click.mp3` | General button press | Soft click, 0.2 seconds |
-| Select | `select.mp3` | Tower selected from sidebar | UI feedback blip, 0.2 seconds |
-| Error | `error.mp3` | Invalid action (not enough credits, etc.) | Negative buzz, 0.3 seconds |
-| Credit Gain | `credit_gain.mp3` | Credits awarded (enemy killed) | Coin/ding sound, 0.3 seconds |
-| Credit Spend | `credit_spend.mp3` | Credits spent (tower placed) | Cash register or swoosh, 0.3 seconds |
-| Life Lost | `life_lost.mp3` | Played when an enemy escapes | Warning/alarm, 0.5 seconds |
+| Button Click | `button_click.mp3` | General button press | Soft click, 0.2 seconds | DONE
+| Button Hover | `button_hover.mp3` | Button hovered over | Subtle hover sound, 0.1 seconds | DONE
+| Error | `error.mp3` | Invalid action (not enough credits, etc.) | Negative buzz, 0.3 seconds | DONE
+| Life Lost | `life_lost.mp3` | Played when an enemy escapes | Warning/alarm, 0.5 seconds | DONE
 
 ---
 

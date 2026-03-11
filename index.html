@@ -54,6 +54,9 @@
         <!-- End Game Button -->
         <button id="end-game-btn" class="end-game-btn">End Game</button>
         
+        <!-- Return to Menu Button (shown on game over) -->
+        <button id="return-menu-btn" class="return-menu-btn hidden">Return to Main Menu</button>
+        
         <!-- Music Volume Slider -->
         <div class="music-volume-slider" id="game-music-slider">
             <span class="volume-icon">♪</span>
@@ -183,16 +186,17 @@
             </div>
             
             <div class="panel">
-                <h2>SPEED</h2>
+                <h2>GAME SPEED</h2>
                 <div id="speed-toggle">
                     <button class="speed-btn active" data-speed="1">1×</button>
                     <button class="speed-btn" data-speed="2">2×</button>
                     <button class="speed-btn" data-speed="3">3×</button>
+                    <button class="speed-btn" data-speed="5">5×</button>
                 </div>
             </div>
             
             <div class="panel">
-                <h2>DISPLAY</h2>
+                <h2>TOGGLE OVERLAY</h2>
                 <div id="display-toggle">
                     <button class="display-btn active" id="wavefunction-toggle">Wavefunction</button>
                     <button class="display-btn active" id="bloch-toggle">Bloch Sphere</button>
@@ -254,11 +258,17 @@
 
         // Pre-menu button - start audio and show main menu
         preMenuBtn.addEventListener('click', () => {
+            if (typeof playSound === 'function') playSound('buttonClick', { volume: 0.5 });
             // Start background music (now allowed since user clicked)
             audioManager.playBackgroundMusic();
             // Show main menu
             preMenuScreen.classList.add('hidden');
             titleScreen.classList.remove('hidden');
+        });
+        
+        // Hover sound for pre-menu button
+        preMenuBtn.addEventListener('mouseenter', () => {
+            if (typeof playSound === 'function') playSound('buttonHover', { volume: 0.3 });
         });
 
         // Reset game state
@@ -312,6 +322,7 @@
 
         // Career Mode button - start game in career mode
         careerBtn.addEventListener('click', () => {
+            if (typeof playSound === 'function') playSound('buttonClick', { volume: 0.5 });
             audioManager.playGameMusic();
             resetGame();
             initGameForMode('career');
@@ -320,9 +331,15 @@
             setupInput();
             startGame();
         });
+        
+        // Hover sound for career button
+        careerBtn.addEventListener('mouseenter', () => {
+            if (typeof playSound === 'function') playSound('buttonHover', { volume: 0.3 });
+        });
 
         // Sandbox Mode button - start game in sandbox mode
         sandboxBtn.addEventListener('click', () => {
+            if (typeof playSound === 'function') playSound('buttonClick', { volume: 0.5 });
             audioManager.playGameMusic();
             resetGame();
             initGameForMode('sandbox');
@@ -332,16 +349,33 @@
             startGame();
         });
         
+        // Hover sound for sandbox button
+        sandboxBtn.addEventListener('mouseenter', () => {
+            if (typeof playSound === 'function') playSound('buttonHover', { volume: 0.3 });
+        });
+        
         // How to Play button - show instructions
         howToPlayBtn.addEventListener('click', () => {
+            if (typeof playSound === 'function') playSound('buttonClick', { volume: 0.5 });
             titleScreen.classList.add('hidden');
             howToPlayScreen.classList.remove('hidden');
         });
         
+        // Hover sound for how to play button
+        howToPlayBtn.addEventListener('mouseenter', () => {
+            if (typeof playSound === 'function') playSound('buttonHover', { volume: 0.3 });
+        });
+        
     // Back button - return to title
     backBtn.addEventListener('click', () => {
+        if (typeof playSound === 'function') playSound('buttonClick', { volume: 0.5 });
         howToPlayScreen.classList.add('hidden');
         titleScreen.classList.remove('hidden');
+    });
+    
+    // Hover sound for back button
+    backBtn.addEventListener('mouseenter', () => {
+        if (typeof playSound === 'function') playSound('buttonHover', { volume: 0.3 });
     });
     
     // Display toggles
@@ -359,6 +393,7 @@
     
     // Pause button
     document.getElementById('pause-btn').addEventListener('click', () => {
+        if (typeof playSound === 'function') playSound('buttonClick', { volume: 0.5 });
         if (game.gameOver || game.victory) return;
         game.paused = !game.paused;
         const pauseBtn = document.getElementById('pause-btn');
@@ -397,6 +432,7 @@
     
     // End Game button - return to main menu
     document.getElementById('end-game-btn').addEventListener('click', () => {
+        if (typeof playSound === 'function') playSound('buttonClick', { volume: 0.5 });
         showConfirmModal(
             'END GAME',
             'Are you sure you want to end the game? All progress will be lost.',
@@ -442,7 +478,13 @@
     
     // Close modal on cancel button click
     document.getElementById('confirm-modal-cancel').addEventListener('click', () => {
+        if (typeof playSound === 'function') playSound('buttonClick', { volume: 0.5 });
         document.getElementById('confirm-modal').classList.add('hidden');
+    });
+    
+    // Hover sound for cancel button
+    document.getElementById('confirm-modal-cancel').addEventListener('mouseenter', () => {
+        if (typeof playSound === 'function') playSound('buttonHover', { volume: 0.3 });
     });
     
     // Close modal on backdrop click
@@ -450,6 +492,44 @@
         if (e.target.id === 'confirm-modal') {
             document.getElementById('confirm-modal').classList.add('hidden');
         }
+    });
+    
+    // Hover sound for end-game button
+    document.getElementById('end-game-btn').addEventListener('mouseenter', () => {
+        if (typeof playSound === 'function') playSound('buttonHover', { volume: 0.3 });
+    });
+    
+    // Return to Menu button - return to main menu from game over
+    document.getElementById('return-menu-btn').addEventListener('click', () => {
+        if (typeof playSound === 'function') playSound('buttonClick', { volume: 0.5 });
+        // Stop the game
+        game.running = false;
+        game.gameOver = false;
+        game.victory = false;
+        game.paused = false;
+        
+        // Hide return menu button and show end game button for next game
+        document.getElementById('return-menu-btn').classList.add('hidden');
+        document.getElementById('end-game-btn').style.display = 'block';
+        
+        // Hide game container
+        gameContainer.classList.add('hidden');
+        
+        // Show title screen
+        titleScreen.classList.remove('hidden');
+        
+        // Restart the title screen music
+        audioManager.playBackgroundMusic();
+    });
+    
+    // Hover sound for return menu button
+    document.getElementById('return-menu-btn').addEventListener('mouseenter', () => {
+        if (typeof playSound === 'function') playSound('buttonHover', { volume: 0.3 });
+    });
+    
+    // Hover sound for confirm button
+    document.getElementById('confirm-modal-btn').addEventListener('mouseenter', () => {
+        if (typeof playSound === 'function') playSound('buttonHover', { volume: 0.3 });
     });
 </script>
 </body>
