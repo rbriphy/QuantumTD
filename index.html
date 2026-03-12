@@ -862,6 +862,11 @@
                 titleScreen.classList.remove('hidden');
                 
                 // Stop game music and play background music
+                
+                // Reset tutorial state if active
+                if (typeof tutorialManager !== 'undefined') {
+                    tutorialManager.reset();
+                }
                 audioManager.playBackgroundMusic();
             }
         );
@@ -931,6 +936,11 @@
         titleScreen.classList.remove('hidden');
         
         // Restart the title screen music
+        
+        // Reset tutorial state if active
+        if (typeof tutorialManager !== 'undefined') {
+            tutorialManager.reset();
+        }
         audioManager.playBackgroundMusic();
     });
     

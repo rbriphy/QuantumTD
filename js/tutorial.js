@@ -54,7 +54,7 @@ class TutorialManager {
             {
                 id: 'placeTower',
                 title: 'Place a Tower',
-                instruction: 'Move your mouse over the path and left-click to place the tower. Place it near the highlighted area (later in the path).',
+                instruction: 'Move your mouse over the path and left-click to place the tower. Place it near the highlighted area.',
                 highlightElement: '#game',
                 requiredAction: 'placeTower',
                 placementHint: { x: -410, y: 100 },  // Middle of path - good for measurement tower (between points 4-5)
@@ -111,7 +111,7 @@ class TutorialManager {
             {
                 id: 'placeRotation',
                 title: 'Build a Defense',
-                instruction: 'Place 2 rotation towers along the path before your measurement tower. These will move the enemy toward |1⟩ (death state).',
+                instruction: 'Place 2 rotation towers along the path before your measurement tower. These will move the enemy toward the |1⟩ state (death).',
                 highlightElement: null,
                 requiredAction: 'placeTower',
                 towerToSelect: 'rx90',
@@ -140,7 +140,7 @@ class TutorialManager {
             {
                 id: 'hoverEnemy',
                 title: 'Understanding Quantum State',
-                instruction: 'Hover your mouse over the enemy to see its quantum state. The sidebar shows the probability amplitudes α and β. |0⟩ means survive, |1⟩ means die! You can click on an enemy to pin its quantum state in the sidebar.',
+                instruction: 'Hover your mouse over the enemy to see its quantum state. The sidebar shows the probability amplitudes α and β. |0⟩ means survival, |1⟩ means death. You can click on an enemy to pin its quantum state in the sidebar.',
                 highlightElement: null,
                 requiredAction: 'hoverEnemy',
                 completionCondition: () => {
@@ -152,7 +152,7 @@ class TutorialManager {
             {
                 id: 'startWave2',
                 title: 'Final Wave',
-                instruction: 'After a round is over, click START WAVE again to send the next wave of enemies through your defenses. Watch how the quantum state changes as it passes each tower!',
+                instruction: 'After a round is over, click START WAVE again to send the next wave of enemies through your defenses. Watch how the quantum state changes as it passes each tower.',
                 highlightElement: '#start-btn',
                 requiredAction: 'startWave',
                 completionCondition: () => {

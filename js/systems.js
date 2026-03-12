@@ -67,7 +67,7 @@ function drawPath() {
     ctx.fillStyle = '#00ff00';
     ctx.font = '12px "Orbitron"';
     ctx.textAlign = 'center';
-    ctx.fillText('START', PATH[0].x, PATH[0].y - 30);
+    ctx.fillText('START', PATH[1].x, PATH[1].y - 30);
     
     ctx.fillStyle = '#ff0000';
     ctx.fillText('END', PATH[PATH.length-1].x, PATH[PATH.length-1].y - 30);
