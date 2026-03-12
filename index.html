@@ -136,14 +136,14 @@
                     <div class="htp-diagram">
                         <div class="htp-diagram-item">
                             <span class="htp-state">|0⟩</span>
-                            <span class="htp-state-desc">North Pole = 100% survive</span>
+                            <span class="htp-state-desc">North Pole = 100% chance of survival</span>
                         </div>
                         <div class="htp-diagram-item">
                             <span class="htp-state">|1⟩</span>
-                            <span class="htp-state-desc">South Pole = 100% die</span>
+                            <span class="htp-state-desc">South Pole = 100% chance of death</span>
                         </div>
                     </div>
-                    <p>Most enemies start somewhere in between—giving you a <strong>chance</strong> to kill them!</p>
+                    
                 </div>
                 
                 <div class="htp-section">
@@ -246,6 +246,7 @@
         
         <div id="canvas-wrapper">
             <canvas id="game" width="1100" height="750"></canvas>
+            <div id="wave-message" class="hidden"></div>
         </div>
         <div id="sidebar">
             <h1>QUBIT DEFENSE</h1>
@@ -260,7 +261,7 @@
                     <div class="stat-label">Wave</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value" id="lives">20</div>
+                    <div class="stat-value" id="lives">10</div>
                     <div class="stat-label">Lives</div>
                 </div>
                 <div class="stat">
@@ -373,6 +374,7 @@
                     <button class="speed-btn" data-speed="2">2×</button>
                     <button class="speed-btn" data-speed="3">3×</button>
                     <button class="speed-btn" data-speed="5">5×</button>
+                    <button class="speed-btn" data-speed="10">10×</button>
                 </div>
             </div>
             
@@ -457,7 +459,7 @@
         function resetGame() {
             game.credits = 100;
             game.wave = 1;
-            game.lives = 20;
+            game.lives = STARTING_LIVES;
             game.kills = 0;
             game.running = false;
             game.waveInProgress = false;
@@ -952,6 +954,30 @@
     // Hover sound for confirm button
     document.getElementById('confirm-modal-btn').addEventListener('mouseenter', () => {
         if (typeof playSound === 'function') playSound('buttonHover', { volume: 0.3 });
+    });
+    
+    // ============================================
+    // CAREER MODE WAVE MESSAGE FUNCTIONS
+    // ============================================
+    
+    // Show wave message at bottom of screen
+    function showWaveMessage(message) {
+        const waveMessageEl = document.getElementById('wave-message');
+        if (!waveMessageEl) return;
+        
+        // Set the message text
+        waveMessageEl.innerHTML = '<p>' + message + '</p>';
+        
+        // Show the message (persists until next wave starts)
+        waveMessageEl.classList.remove('hidden');
+    }
+    
+    // Hide wave message when new wave starts
+    document.getElementById('start-btn').addEventListener('click', () => {
+        const waveMessageEl = document.getElementById('wave-message');
+        if (waveMessageEl) {
+            waveMessageEl.classList.add('hidden');
+        }
     });
 </script>
 </body>

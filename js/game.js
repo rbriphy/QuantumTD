@@ -9,9 +9,9 @@ const ALL_TOWER_KEYS = Object.keys(TOWER_TYPES);
 
 // Global game state
 const game = {
-    credits: 100,
+    credits: 50,
     wave: 1,
-    lives: 20,
+    lives: STARTING_LIVES,
     kills: 0,
     running: false,
     waveInProgress: false,
@@ -278,6 +278,14 @@ function gameLoop(timestamp) {
                         tutorialManager.tutorialWavesCompleted++;
                         tutorialManager.checkStepCompletion();
                     }
+                } else if (gameMode === 'career') {
+                    // Show custom wave message for career mode
+                    // Note: game.wave has already been incremented, so use wave - 2 to get the completed wave's message
+                    const waveIndex = game.wave - 2;
+                    if (waveIndex >= 0 && waveIndex < WAVE_MESSAGES.length) {
+                        showWaveMessage(WAVE_MESSAGES[waveIndex]);
+                    }
+                    log(`Wave complete! Wave ${game.wave} ready.`, 'kill');
                 } else {
                     log(`Wave complete! Wave ${game.wave} ready.`, 'kill');
                 }

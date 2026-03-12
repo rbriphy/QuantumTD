@@ -1,5 +1,8 @@
 // Game configuration constants
 
+// Starting lives for the player
+const STARTING_LIVES = 10;
+
 // Tower types with costs, colors, and labels
 const TOWER_TYPES = {
     hadamard: { cost: 15, color: '#00ffff', label: 'H' },
@@ -19,13 +22,13 @@ const TOWER_TYPES = {
 
 // Career mode tower unlock progression (wave number when tower becomes available)
 const CAREER_UNLOCKS = {
-    1: ['rx20', 'measure'],
-    2: ['rz45'],
-    3: ['ry20', 'rz20'],
-    4: ['rz90', 'rx45'],
-    5: ['ry45', 'hadamard'],
-    7: ['rx90'],
-    8: ['ry90'],
+    1: ['rz45', 'hadamard', 'measure'],
+    2: [],
+    3: ['rz20','ry20', 'rx20'],
+    4: [, 'rx45'],
+    5: [],
+    7: ['rx90','rz90','ry90'],
+    8: ['ry45'],
     9: ['measureX'],
     10: ['measureY']
 };
@@ -49,13 +52,14 @@ const PATH = [
     {x: 1050, y: 380}
 ];
 
+const SPAWN_INTERVAL = 8000;
 // Wave definitions with enemy count and spawn interval
 const WAVES = [
-    { count: 25, interval: 8000 },
-    { count: 8, interval: 8000 },
-    { count: 12, interval: 8000 },
-    { count: 15, interval: 8000 },
-    { count: 20, interval: 8000 }
+    { count: 5, interval: SPAWN_INTERVAL },
+    { count: 8, interval: SPAWN_INTERVAL },
+    { count: 12, interval: SPAWN_INTERVAL*0.8 },
+    { count: 15, interval: SPAWN_INTERVAL*0.7 },
+    { count: 20, interval: SPAWN_INTERVAL*0.6 }
 ];
 
 // Tutorial waves - simplified for learning
@@ -66,6 +70,15 @@ const TUTORIAL_WAVES = [
 
 // Tutorial mode tower unlocks - only Rx90 and Z-Measurement available
 const TUTORIAL_UNLOCKS = ['rx90', 'measure'];
+
+// Career mode custom wave messages (displayed at bottom of screen at end of each wave)
+const WAVE_MESSAGES = [
+    "Wave 1 Complete! Did you know even with the most optimal strategy there is a 15% chance of survival per enemy for wave 1? Hope you got lucky!",
+    "Wave 2 Complete! Have some more gates, good luck figuring out how to use them.",
+    "Wave 3 Complete! Another new gate coming your way. Now might be a good time to reconfigure your defense layout.",
+    "Wave 4 Complete! The quantum gate shipment is delayed due to an AWS outage, you're on your own for this one.",
+    "Wave 5 Complete! Victory is yours!"
+];
 
 // Display settings
 let showWavefunction = true;
